@@ -1,0 +1,27 @@
+{
+    "cSpell.words": [
+        "biomejs",
+    ],
+    "editor.formatOnSave": true,
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "typescript.preferences.importModuleSpecifier": "non-relative",
+    "search.exclude": {
+        "**/templates": true
+    },
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+        "quickfix.biome": "always",
+        "source.organizeImports.biome": "always"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    },
+    "typescript.tsdk": "node_modules/typescript/lib",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "biomejs.biome"
+    }
+}
