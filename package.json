@@ -11,11 +11,14 @@
     "check:fix": "biome check --write --unsafe ."
   },
   "dependencies": {
+    "@conform-to/react": "^1.2.2",
+    "@conform-to/zod": "^1.2.2",
     "justd-icons": "^1.10.25",
     "next": "canary",
     "react": "canary",
     "react-aria-components": "^1.6.0",
-    "react-dom": "canary"
+    "react-dom": "canary",
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
