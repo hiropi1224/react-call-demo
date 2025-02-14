@@ -3,17 +3,24 @@
 import { useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod";
 import { IconLoader2 } from "justd-icons";
-import { useActionState } from "react";
+import { redirect } from "next/navigation";
+import { useActionState, useEffect } from "react";
 import { login } from "~/action/login";
+import { SuccessNote } from "~/components/react-call/notification";
 import { Button, Checkbox, Form, TextField } from "~/components/ui";
 import { loginSchema } from "~/schema";
 
-export function LoginForm() {
-  const [lastResult, action, isPending] = useActionState(login, undefined);
-  const [{ id, onSubmit, errors }, fields] = useForm({
-    // Sync the result of last submission
-    lastResult,
+interface FormState {
+  state: "idle" | "success" | "error";
+  message: string;
+}
 
+export function LoginForm() {
+  const [lastResult, action, isPending] = useActionState<FormState, FormData>(
+    login,
+    { state: "idle", message: "" } as const,
+  );
+  const [{ id, onSubmit }, fields] = useForm({
     // Reuse the validation logic on the client
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: loginSchema });
@@ -24,20 +31,20 @@ export function LoginForm() {
     shouldRevalidate: "onInput",
   });
 
-  return (
-    <form
-      id={id}
-      onSubmit={onSubmit}
-      action={action}
-      className="mx-auto w-full max-w-md space-y-6 rounded-xl border border-white/10 bg-white/5 p-8 shadow-xl backdrop-blur-md"
-    >
-      <div className="space-y-1">
-        <h2 className="font-bold text-2xl text-foreground/90">ログイン</h2>
-        <p className="text-foreground/60 text-sm">
-          アカウントにサインインして続けましょう
-        </p>
-      </div>
+  useEffect(() => {
+    if (lastResult.state === "success") {
+      SuccessNote.call({ message: lastResult.message });
+      redirect("/dashboard");
+    }
 
+    return () => {
+      setTimeout(() => {
+        SuccessNote.end(false);
+      }, 3000);
+    };
+  }, [lastResult]);
+  return (
+    <form id={id} onSubmit={onSubmit} action={action} className="space-y-4">
       <div className="space-y-4">
         <div className="flex flex-col gap-y-1">
           <TextField

@@ -26,6 +26,9 @@ importers:
       react-aria-components:
         specifier: ^1.6.0
         version: 1.6.0(react-dom@19.1.0-canary-cd90a4d8-20250210(react@19.1.0-canary-cd90a4d8-20250210))(react@19.1.0-canary-cd90a4d8-20250210)
+      react-call:
+        specifier: ^1.7.0
+        version: 1.7.0(react@19.1.0-canary-cd90a4d8-20250210)
       react-dom:
         specifier: canary
         version: 19.1.0-canary-cd90a4d8-20250210(react@19.1.0-canary-cd90a4d8-20250210)
@@ -1178,6 +1181,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+
+  react-call@1.7.0:
+    resolution: {integrity: sha512-HjWK7zzeooYkOlFulkmEd1PFKKPfx7oEHogtSvOCv+6LIh/zTSsTtM0hpAnC5Sm5QVadhSeYLCos86JkcXD0Ag==}
+    peerDependencies:
+      react: '>=18'
 
   react-dom@19.1.0-canary-cd90a4d8-20250210:
     resolution: {integrity: sha512-TYRtvgwP3xc5vCfY0/LkYHw0vhFAQjI62Vaw6Pk/5ZyOVXyAh7YnXIDuaqc0xr45se+VL5y//pRf6gXNYdsywA==}
@@ -2816,6 +2824,10 @@ snapshots:
       '@react-types/shared': 3.27.0(react@19.1.0-canary-cd90a4d8-20250210)
       react: 19.1.0-canary-cd90a4d8-20250210
       react-dom: 19.1.0-canary-cd90a4d8-20250210(react@19.1.0-canary-cd90a4d8-20250210)
+
+  react-call@1.7.0(react@19.1.0-canary-cd90a4d8-20250210):
+    dependencies:
+      react: 19.1.0-canary-cd90a4d8-20250210
 
   react-dom@19.1.0-canary-cd90a4d8-20250210(react@19.1.0-canary-cd90a4d8-20250210):
     dependencies:

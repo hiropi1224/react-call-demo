@@ -1,7 +1,6 @@
 "use server";
 
 import { parseWithZod } from "@conform-to/zod";
-import { redirect } from "next/navigation";
 import { loginSchema } from "~/schema";
 
 export async function login(prevState: unknown, formData: FormData) {
@@ -9,13 +8,15 @@ export async function login(prevState: unknown, formData: FormData) {
   const submission = parseWithZod(formData, {
     schema: loginSchema,
   });
-  console.log("--- login action ---");
-  console.log(submission);
-  console.log(formData);
 
   if (submission.status !== "success") {
-    return submission.reply();
+    return {
+      state: "error",
+      message: "ログインに失敗しました",
+    } as const;
   }
-
-  redirect("/dashboard");
+  return {
+    state: "success",
+    message: "ログインに成功しました",
+  } as const;
 }

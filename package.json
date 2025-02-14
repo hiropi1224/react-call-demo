@@ -17,6 +17,7 @@
     "next": "canary",
     "react": "canary",
     "react-aria-components": "^1.6.0",
+    "react-call": "^1.7.0",
     "react-dom": "canary",
     "zod": "^3.24.2"
   },
