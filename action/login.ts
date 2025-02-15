@@ -3,7 +3,12 @@
 import { parseWithZod } from "@conform-to/zod";
 import { loginSchema } from "~/schema";
 
-export async function login(prevState: unknown, formData: FormData) {
+interface State {
+  state: "idle" | "success" | "error";
+  message: string;
+}
+
+export async function login(_prevState: State, formData: FormData) {
   await new Promise((resolve) => setTimeout(resolve, 3000));
   const submission = parseWithZod(formData, {
     schema: loginSchema,
